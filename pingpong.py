@@ -7,6 +7,8 @@ lose1 = font1.render('Player-1 LOSE!', True, (180, 0, 0))
 win2 = font1.render('Player-2 WIN!', True, (255, 255, 255))
 lose2 = font1.render('Player-2 LOSE!', True, (180, 0, 0))
 
+font2 = font.Font(None, 36)
+
 back = 'фон.jpg'
 ballpng = 'мяч.png'
 rocketki = 'ракетка.png'
@@ -55,6 +57,10 @@ clock = time.Clock()
 dx = 2
 dy = 2
 
+score1 = 0
+score2 = 0
+goal = 10
+
 while run:
     for e in event.get():
         if e.type == QUIT:
@@ -69,6 +75,22 @@ while run:
         player2.reset()
         ball.reset()
 
+        if sprite.collide_rect(ball, player1):
+            score1 += 1
+        if sprite.collide_rect(ball, player2):
+            score2 += 1
+
+        if score1 == goal:
+            finish == True
+            window.blit(win1, (150, 200))
+        if score2 == goal:
+            finish == True
+            window.blit(win2, (150, 200))
+
+        text = font2.render("1 Счет: " + str(score1), 1, (255, 255, 255))
+        window.blit(text, (10, 20))
+        text = font2.render("2 Счет: " + str(score2), 1, (255, 255, 255))
+        window.blit(text, (590, 20))
 
         if ball.rect.x < win_width - 700:
             finish = True
