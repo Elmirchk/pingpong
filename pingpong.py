@@ -8,7 +8,7 @@ win2 = font1.render('Player-2 WIN!', True, (255, 255, 255))
 lose2 = font1.render('Player-2 LOSE!', True, (180, 0, 0))
 
 back = 'фон.jpg'
-ballpng = 'pingpong.png'
+ballpng = 'мяч.png'
 rocketki = 'ракетка.png'
 
 class GameSprite(sprite.Sprite):
